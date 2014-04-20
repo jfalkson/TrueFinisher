@@ -25,5 +25,8 @@ TrueFinisher::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
+#adding config for devise for dev environment
+ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   config.assets.debug = true
 end
