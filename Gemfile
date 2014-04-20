@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 #adding devise authentication
 gem 'devise'
 
+#adding bootstrap
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
