@@ -1,5 +1,12 @@
 TrueFinisher::Application.routes.draw do
   devise_for :users
+  
+
+  root 'static#index'
+  get '/contact', to: 'static#contact'
+  get '/about', to: 'static#about'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
