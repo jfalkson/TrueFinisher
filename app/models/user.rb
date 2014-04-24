@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   #making a call to devise importing the below modules
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :userdailydata
 end
