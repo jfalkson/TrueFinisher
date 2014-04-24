@@ -58,26 +58,48 @@
       </div>
     </div>
 
+<!--everything below is within one container per the bootstrap grid syntax -->
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="jumbotron">
+        <h1>
+          Hello, world!
+        </h1>
+        <p>
+          This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="#">Learn more</a>
+        </p>
+
+
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+    <div class="navbar navbar-fluid-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">TrueFinisher</a>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
               <li><%= link_to "About", "/about"  %></li>
               <li><%= link_to "Contact", "/contact"  %></li>
               <li><%= link_to "Home", "/index"  %></li>
             </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
+          </div><!--/.nav-collapse -->
         </div>
-      </div><!--/row-->
+      </div>
+    </div>
+
+
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>&copy; TrueFinisher 2014</p>
       </footer>
 
     </div> <!-- /container -->
