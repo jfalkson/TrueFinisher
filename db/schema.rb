@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420020019) do
+ActiveRecord::Schema.define(version: 20140424022941) do
+
+  create_table "userdailydata", force: true do |t|
+    t.string   "user_id"
+    t.integer  "calories_consumed"
+    t.integer  "calories_exercised"
+    t.datetime "date"
+    t.integer  "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

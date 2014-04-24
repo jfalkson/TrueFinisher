@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: MyString
+  calories_consumed: 1
+  calories_exercised: 1
+  date: 2014-04-23 22:29:41
+  weight: 1
+
+two:
+  user_id: MyString
+  calories_consumed: 1
+  calories_exercised: 1
+  date: 2014-04-23 22:29:41
+  weight: 1
