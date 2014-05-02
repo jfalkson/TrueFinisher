@@ -18,9 +18,11 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -30,6 +32,8 @@ gem 'jbuilder', '~> 1.2'
 
 #adding devise authentication
 gem 'devise'
+
+gem 'will_paginate'
 
 #adding bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
