@@ -1,22 +1,18 @@
-class userDatatable
+class UserdailydataDatatable
   delegate :params, :h, :link_to, :number_to_currency, to: :@view
+  include ApplicationHelper
+  include Rails.application.routes.url_helpers
 
   def initialize(view)
     @view = view
   end
 
 
-      t.integer :calories_consumed
-      t.integer :calories_exercised
-      t.datetime :date
-      t.integer :weight
-
-
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: Userdailydata.count,
-      iTotalDisplayRecords: Userdailydata.total_entries,
+      iTotalDisplayRecords: userdailydata.total_entries,
       aaData: data
     }
   end
@@ -24,27 +20,28 @@ class userDatatable
 private
 
   def data
-    Userdailydata.map do |data|
+    userdailydata.map do |datapoint|
       [
-        h(data.date),
-        h(data.calories_consumed),
-        h(data.calories_exercised),
-        h(data.weight)
+        h(datapoint.date),
+        h(datapoint.calories_consumed),
+        h(datapoint.calories_exercised),
+        h(datapoint.weight)
       ]
     end
   end
+  
 
-  def userData
-    @userData ||= fetch_Userdailydata
+  def userdailydata
+    @userdailydata ||= fetch_userdailydata
   end
 
-  def fetch_Userdailydata
-    userDatauserData = Userdailydata.order("#{sort_column} #{sort_direction}")
-    userData = userData.page(page).per_page(per_page)
+  def fetch_userdailydata
+    userdailydata = Userdailydata.order("#{sort_column} #{sort_direction}")
+    userdailydata = userdailydata.page(page).per_page(per_page)
     if params[:sSearch].present?
-      userData = userData.where("name like :search or category like :search", search: "%#{params[:sSearch]}%")
+      userdailydata = userdailydata.where("date like :search", search: "%#{params[:sSearch]}%")
     end
-    userData
+    userdailydata
   end
 
   def page
@@ -56,11 +53,13 @@ private
   end
 
   def sort_column
-    columns = %w[name category released_on price]
+    columns = %w[created_at]
     columns[params[:iSortCol_0].to_i]
   end
 
   def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+    params[:sSortDir_0] == "desc" 
   end
+
 end
+

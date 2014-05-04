@@ -1,5 +1,5 @@
 jQuery ->
-  $('#products').dataTable
+  $('#userdailydata').dataTable
     sPaginationType: "full_numbers"
     bJQueryUI: true
     bProcessing: true
