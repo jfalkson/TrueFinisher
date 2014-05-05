@@ -1,0 +1,25 @@
+</br>
+<h4>Add a new entry of your calories</h4>
+
+
+<%= form_for @userdailydata, url: {action: "create"} do |f| %>
+    <% if @userdailydata.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@userdailydata.errors.count, "error") %> prohibited this userdata from being saved:</h2>
+	 <% end %> 
+
+  <div><%= f.label "Date"%><br />
+  <!-- we call rec_types from the static list in the model -->
+  <%= f.text_field :date %></div>
+  
+  <div><%= f.label "Calories Consumed" %><br />
+  <%= f.text_field  :calories_consumed %></div>
+
+  <div><%= f.label "Calories Exercised" %><br />
+  <%= f.text_field  :calories_exercised %></div>
+
+  <div><%= f.label "Weight" %><br />
+  <%= f.text_field  :weight %></div>
+
+  <div> <%= f.submit "Add data " %></div>
+<% end %>
