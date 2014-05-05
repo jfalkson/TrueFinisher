@@ -1,13 +1,11 @@
 TrueFinisher::Application.routes.draw do
+  devise_for :admins
   devise_for :users
   
 
   root 'static#index'
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
-  get '/data', to: 'userdailydata#index'
-  resources :userdailydata
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
