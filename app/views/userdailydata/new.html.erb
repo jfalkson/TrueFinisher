@@ -3,10 +3,11 @@
 
 
 <%= form_for @userdailydata, url: {action: "create"} do |f| %>
+    
     <% if @userdailydata.errors.any? %>
     <div id="error_explanation">
     <h2><%= pluralize(@userdailydata.errors.count, "error") %> prohibited this userdata from being saved:</h2>
-	 <% end %> 
+	   <% end %> 
 
   <div><%= f.label "Date"%><br />
   <!-- we call rec_types from the static list in the model -->
