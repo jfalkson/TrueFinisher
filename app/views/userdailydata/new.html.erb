@@ -1,5 +1,5 @@
 </br>
-<h4>Add a new entry of your calories</h4>
+<h4>Add a new entry of your calories for <%= Time.now.strftime("%Y-%m-%d") %></h4>
 
 
 <%= form_for @userdailydata, url: {action: "create"} do |f| %>
@@ -9,9 +9,13 @@
     <h2><%= pluralize(@userdailydata.errors.count, "error") %> prohibited this userdata from being saved:</h2>
 	   <% end %> 
 
+<!--
   <div><%= f.label "Date"%><br />
-  <!-- we call rec_types from the static list in the model -->
-  <%= f.text_field :date %></div>
+  we call rec_types from the static list in the model 
+ 
+
+  <%= f.text_field :date %></div> -->
+  <div><%= f.date_select :date, :order => [:month, :day, :year] %> </div>
   
   <div><%= f.label "Calories Consumed" %><br />
   <%= f.text_field  :calories_consumed %></div>
@@ -22,7 +26,7 @@
   <div><%= f.label "Weight" %><br />
   <%= f.text_field  :weight %></div>
 
-  <div> <%= f.hidden_field :user_id  %> </div> 
+
 
   <div> <%= f.submit "Add data " %></div>
 <% end %>
