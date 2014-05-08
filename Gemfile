@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 #adding devise authentication
 gem 'devise'
 
+##charting feature
+gem 'rickshaw_rails'
+
 #adding bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
