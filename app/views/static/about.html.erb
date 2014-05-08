@@ -1,11 +1,90 @@
 <br/>
-<!-- Main hero unit for a primary marketing message or call to action -->
+<head>
+<link type="text/css" rel="stylesheet" href="../rickshaw.css">
+<link type="text/css" rel="stylesheet" href="css/lines.css">
+<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+<script src="../vendor/d3.v3.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+
+<script src="../rickshaw.js"></script>
+<style>
+  .column { display: inline-block }
+  #legend { background: white }
+  #legend .line { color: #333 }
+</style>
+</head>
+<body>
+
+<div class="column">
+  <div id="chart"></div>
+  <div id="slider"></div>
+</div>
+<div class="column" id="legend"></div>
+
+<script>
+
+var seriesData = [ [], [], [], [], [] ];
+var random = new Rickshaw.Fixtures.RandomData(50);
+
+for (var i = 0; i < 75; i++) {
+  random.addData(seriesData);
+}
+
+var graph = new Rickshaw.Graph( {
+  element: document.getElementById("chart"),
+  renderer: 'multi',
+  width: 900,
+  height: 500,
+  dotSize: 5,
+  series: [
+    {
+      name: 'temperature',
+      data: seriesData.shift(),
+      color: 'rgba(255, 0, 0, 0.4)',
+      renderer: 'stack'
+    }, {
+      name: 'heat index',
+      data: seriesData.shift(),
+      color: 'rgba(255, 127, 0, 0.4)',
+      renderer: 'stack'
+    }, {
+      name: 'dewpoint',
+      data: seriesData.shift(),
+      color: 'rgba(127, 0, 0, 0.3)',
+      renderer: 'scatterplot'
+    }, {
+      name: 'pop',
+      data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y / 4 } }),
+      color: 'rgba(0, 0, 127, 0.4)',
+      renderer: 'bar'
+    }, {
+      name: 'humidity',
+      data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y * 1.5 } }),
+      renderer: 'line',
+      color: 'rgba(0, 0, 127, 0.25)'
+    }
+  ]
+} );
+
+
+graph.render();
+
+
+
+
+
+
+</script>
+</body>
+
+
       <div class="hero-unit">
         <h1>Welcome!</h1>
         <p>TrueFinisher is a company that will help you reach and surpass your weight loss and fitness goals by providing you comprehensive analytics on the progress of your diet. We notify you when you are slipping and identify areas of improvement!</p>
         <p><a href=<%= new_user_registration_path %> class="btn btn-primary btn-large">Sign up for the beta today! &raquo;</a></p>
       </div>
-
 
 
       <!-- Example row of columns -->
@@ -21,3 +100,4 @@
           <p><a class="btn" href="#">Learn more about my story! &raquo;</a></p>
        </div>
       </div>
+     
