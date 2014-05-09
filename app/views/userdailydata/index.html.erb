@@ -1,6 +1,32 @@
 
 </br>
+<script src="/vendor/d3.min.js"></script> 
+<script src="/vendor/d3.layout.min.js"></script> 
+<script src="/rickshaw.min.js"></script> 
+ 
+<div id="chart"></div> 
 
+<script>
+ 
+var graph = new Rickshaw.Graph( {
+    element: document.querySelector("#chart"), 
+    width: 300, 
+    height: 200, 
+    series: [{
+        color: 'steelblue',
+        data:  [
+                {x: gon.userdate[1], y: gon.userdailycalories[1] },
+                {x: gon.userdate[4], y: gon.userdailycalories[2] }
+
+                ]
+    }]
+});
+ 
+graph.render();
+
+
+ 
+</script> 
 
 <table border='1'>
   <thead>

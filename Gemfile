@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 #adding devise authentication
 gem 'devise'
 
+#let's us call rails from inside javascript
+gem 'gon'
+
 ##charting feature
 gem 'rickshaw_rails'
 
