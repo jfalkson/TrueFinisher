@@ -10,7 +10,7 @@ def index
  gon.userdateorig=@userdailydata.pluck(:date)
  gon.userdateorig.map! {|d| d.strftime("%Y-%m-%d")}
  gon.userdate=@userdailydata.pluck(:date)
- gon.userdate.map! {|d| d.to_i}
+ gon.userdate.map! {|d| d.to_i/10000}
 end
 
 def new
