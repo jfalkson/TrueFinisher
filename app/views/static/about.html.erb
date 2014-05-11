@@ -36,9 +36,23 @@
 var seriesData = [ [], [], [], [], [] ];
 var random = new Rickshaw.Fixtures.RandomData(50);
 
+
 for (var i = 0; i < 75; i++) {
   random.addData(seriesData);
 }
+
+
+
+var transformedPoints = gon.calories_consumed.map(function (pt) {
+    return {
+        x: pt[0],
+        y: pt[1]
+    };
+});
+
+gon.calories_consumed = transformedPoints;
+
+
 
 var graph = new Rickshaw.Graph( {
   element: document.getElementById("chart"),
@@ -46,47 +60,25 @@ var graph = new Rickshaw.Graph( {
   width: 900,
   height: 500,
   dotSize: 5,
-  
-
+  //need to put in x,y pairs
   series: [
     {
-      name: 'temperature',
-      
-
-      for (var i = 1; i < 5; i++) {
-      data: [{x: gon.userdailycalories[i], y: gon.userdailycalories [i]}]
-      },
-
-
-
+      name: 'Calories',
+      data: gon.calories_consumed,
       color: 'rgba(255, 0, 0, 0.4)',
       renderer: 'stack'
     }, {
-      name: 'heat index',
+      name: 'Goal',
       data: seriesData.shift(),
       color: 'rgba(255, 127, 0, 0.4)',
       renderer: 'stack'
-    }, {
-      name: 'dewpoint',
-      data: seriesData.shift(),
-      color: 'rgba(127, 0, 0, 0.3)',
-      renderer: 'scatterplot'
-    }, {
-      name: 'pop',
-      data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y / 4 } }),
-      color: 'rgba(0, 0, 127, 0.4)',
-      renderer: 'bar'
-    }, {
-      name: 'humidity',
-      data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y * 1.5 } }),
-      renderer: 'line',
-      color: 'rgba(0, 0, 127, 0.25)'
     }
   ]
 } );
 
 
 graph.render();
+
 
 var detail = new Rickshaw.Graph.HoverDetail({
   graph: graph
@@ -96,12 +88,9 @@ var legend = new Rickshaw.Graph.Legend({
   graph: graph,
   element: document.querySelector('#legend')
 });
-
-
-
-
-
 </script>
+
+
 </body>
 
 
