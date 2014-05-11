@@ -1,1 +1,1 @@
-alert gon.userdate if gon
+alert gon.calories_consumed if gon
