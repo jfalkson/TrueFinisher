@@ -31,64 +31,6 @@
 
 
 
-<script>
-
-var seriesData = [ [], [], [], [], [] ];
-var random = new Rickshaw.Fixtures.RandomData(50);
-
-
-for (var i = 0; i < 75; i++) {
-  random.addData(seriesData);
-}
-
-
-
-var transformedPoints = gon.calories_consumed.map(function (pt) {
-    return {
-        x: pt[0],
-        y: pt[1]
-    };
-});
-
-gon.calories_consumed = transformedPoints;
-
-
-
-var graph = new Rickshaw.Graph( {
-  element: document.getElementById("chart"),
-  renderer: 'multi',
-  width: 900,
-  height: 500,
-  dotSize: 5,
-  //need to put in x,y pairs
-  series: [
-    {
-      name: 'Calories',
-      data: gon.calories_consumed,
-      color: 'rgba(255, 0, 0, 0.4)',
-      renderer: 'stack'
-    }, {
-      name: 'Goal',
-      data: seriesData.shift(),
-      color: 'rgba(255, 127, 0, 0.4)',
-      renderer: 'stack'
-    }
-  ]
-} );
-
-
-graph.render();
-
-
-var detail = new Rickshaw.Graph.HoverDetail({
-  graph: graph
-});
-
-var legend = new Rickshaw.Graph.Legend({
-  graph: graph,
-  element: document.querySelector('#legend')
-});
-</script>
 
 
 </body>

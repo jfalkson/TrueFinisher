@@ -1,33 +1,69 @@
 
 </br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
 <script src="../d3.v2.js"></script> 
 <script src="../rickshaw.js"></script> 
  
 <div id="chart"></div> 
 
 <script>
- 
-var graph = new Rickshaw.Graph( {
-    element: document.querySelector("#chart"), 
-    width: 300, 
-    height: 200, 
-    series: [{
-        color: 'steelblue',
-        data:  [
-                {x: gon.userdate[0], y: gon.userdailycalories[1] },
-                {x: gon.userdate[3], y: gon.userdailycalories[2] }
 
-                ]
-    }]
+
+var transformedPoints = gon.calories_consumed.map(function (pt) {
+    return {
+        x: pt[0],
+        y: pt[1]
+    };
 });
- 
+
+gon.calories_consumed = transformedPoints;
+
+var transformedExercise = gon.calories_exercised.map(function (pt) {
+    return {
+        x: pt[0],
+        y: pt[1]
+    };
+});
+
+gon.calories_exercised = transformedPoints;
+
+
+var graph = new Rickshaw.Graph( {
+  element: document.getElementById("chart"),
+  renderer: 'multi',
+  width: 900,
+  height: 500,
+  dotSize: 5,
+  //need to put in x,y pairs
+  series: [
+    {
+      name: 'Calories',
+      data: gon.calories_consumed,
+      color: 'rgba(255, 0, 0, 0.4)',
+      renderer: 'stack'
+    }, {
+      name: 'Goal',
+      data: gon.calories_exercised,
+      color: 'rgba(255, 127, 0, 0.4)',
+      renderer: 'line'
+    }
+  ]
+} );
+
+
 graph.render();
 
-var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom").ticks(10)
-    .tickFormat(d3.time.format("%Y-%m-%d")); //<== insert the tickFormat function
- 
-</script> 
+
+var detail = new Rickshaw.Graph.HoverDetail({
+  graph: graph
+});
+
+var legend = new Rickshaw.Graph.Legend({
+  graph: graph,
+  element: document.querySelector('#legend')
+});
+</script>
 
 <table border='1'>
   <thead>
