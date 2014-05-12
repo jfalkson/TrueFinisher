@@ -7,22 +7,13 @@ include ApplicationHelper
 def index
  @userdailydata = Userdailydata.where(:user_id=>current_user.id)
  userdailycalories=@userdailydata.pluck(:calories_consumed)
+ userexercise=@userdailydata.pluck(:calories_exercised)
  userdate=@userdailydata.pluck(:date)
  userdate.map! {|d| d.to_i}
  gon.userdate=userdate
- ##Need to format as {x: value}
 #set graph data to x,y series of date, calories
  gon.calories_consumed=gon.userdate.zip(userdailycalories)
-#gon.calories_consumed=userdailycalories
-
-# clean_data = []
-# userdailycalories.each_with_index do |value, index|
-#   clean_data << {:x => index, :y => value}
-# end 
-
-# clean_data=clean_data.to_json
-
-# gon.clean_data=raw(clean_data)
+ gon.calories_exercised=gon.userdate.zip(userexercise)
 
 end
 
