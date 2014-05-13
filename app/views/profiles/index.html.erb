@@ -1,0 +1,31 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start weight</th>
+      <th>Goal weight</th>
+      <th>Height</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.start_weight %></td>
+        <td><%= profile.goal_weight %></td>
+        <td><%= profile.height %></td>
+        <td><%= link_to 'Show', profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile', new_profile_path %>

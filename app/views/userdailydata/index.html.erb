@@ -26,7 +26,7 @@ var transformedExercise = gon.calories_exercised.map(function (pt) {
     };
 });
 
-gon.calories_exercised = transformedPoints;
+gon.calories_exercised = transformedExercise;
 
 
 var graph = new Rickshaw.Graph( {
@@ -41,9 +41,9 @@ var graph = new Rickshaw.Graph( {
       name: 'Calories',
       data: gon.calories_consumed,
       color: 'rgba(255, 0, 0, 0.4)',
-      renderer: 'stack'
+      renderer: 'line'
     }, {
-      name: 'Goal',
+      name: 'Exercise Calories',
       data: gon.calories_exercised,
       color: 'rgba(255, 127, 0, 0.4)',
       renderer: 'line'
