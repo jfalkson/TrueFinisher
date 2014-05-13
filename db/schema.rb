@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140513005116) do
     t.integer  "start_weight"
     t.integer  "goal_weight"
     t.decimal  "height"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
