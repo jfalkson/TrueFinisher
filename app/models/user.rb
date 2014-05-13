@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :userdailydata #:foreign_key => 'user_id'
+  has_many :profiles
 end
