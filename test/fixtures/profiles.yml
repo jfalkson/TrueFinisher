@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_weight: 1
+  goal_weight: 1
+  height: 9.99
+
+two:
+  start_weight: 1
+  goal_weight: 1
+  height: 9.99
