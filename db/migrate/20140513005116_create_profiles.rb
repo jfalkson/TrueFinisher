@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.integer :start_weight
       t.integer :goal_weight
       t.decimal :height
-
+      t.integer :user_id
       t.timestamps
     end
   end

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :userdailydata #:foreign_key => 'user_id'
   has_many :profiles
+  has_many :userdailydata #:foreign_key => 'user_id'
+
 end
