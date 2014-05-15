@@ -2,6 +2,8 @@ class UserdailydataController < ApplicationController
 before_filter :authenticate_user! # :except => [:index, :show] 
 helper_method :sort_column, :sort_direction
 include ApplicationHelper
+respond_to :html, :json
+
 
 ##Need to have this be the data of the specific user##
 def index
@@ -15,6 +17,16 @@ def index
  gon.calories_consumed=gon.userdate.zip(userdailycalories)
  gon.calories_exercised=gon.userdate.zip(userexercise)
 
+end
+
+def edit
+@userdailydata = Userdailydata.where(:user_id=>current_user.id)
+
+end
+
+def update
+@userdailydata = Userdailydata.where(:user_id=>current_user.id)
+respond_with @userdailydata
 end
 
 def new

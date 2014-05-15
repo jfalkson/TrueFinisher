@@ -41,6 +41,9 @@ gem 'rickshaw_rails'
 #adding bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
+#in place editing
+gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
+
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
