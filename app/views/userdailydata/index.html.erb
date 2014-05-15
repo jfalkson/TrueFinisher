@@ -1,10 +1,14 @@
 
 </br>
+<!--! 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
 <script src="../d3.v2.js"></script> 
 <script src="../rickshaw.js"></script> 
  
+ --> 
+
 <div id="chart"></div> 
 
 <script>
@@ -75,14 +79,18 @@ var legend = new Rickshaw.Graph.Legend({
     </tr>
   </thead>
   <tbody>
+
+    <%= best_in_place @userdailydata.last, :date %>
 <% @userdailydata.each do |data| %>
 <tr>
-<td> <%= data.date.strftime("%Y-%m-%d") %> </td>
-<td> <%= data.calories_consumed %> </td>
-<td> <%= data.calories_exercised %> </td>
-<td> <%= data.weight %> </td>
+<td> <%= best_in_place data, :date %> </td>
+<td> <%= best_in_place data, :calories_consumed %> </td>
+<td> <%= best_in_place data, :calories_exercised %> </td>
+<td> <%= best_in_place data, :weight %> </td>
+<td> <%= link_to 'Edit', edit_userdailydatum_path(current_user.id) %> </td>
 </tr> 
 <% end %>
 </tbody>
 </table>
 
+<!-- .strftime("%Y-%m-%d") -->

@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: 366413be357d65cdf47031e928aea969f72e3659
+  branch: rails-4
+  specs:
+    best_in_place (2.0.3)
+      jquery-rails
+      rails (~> 4)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 663760e67b80ee25adc293bf5f03debae28b5af9
   specs:
@@ -145,6 +154,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  best_in_place!
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
