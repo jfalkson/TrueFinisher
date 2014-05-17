@@ -8,8 +8,6 @@ respond_to :html, :json
 ##Need to have this be the data of the specific user##
 def index
  @userdailydata = Userdailydata.where(:user_id=>current_user.id)
-
-
  userdailycalories=@userdailydata.pluck(:calories_consumed)
  userexercise=@userdailydata.pluck(:calories_exercised)
  userdate=@userdailydata.pluck(:date)
@@ -22,23 +20,28 @@ def index
 end
 
 def edit
-@userdailydata = Userdailydata.where(:user_id=>current_user.id)
-
+ @userdailydata = Userdailydata.where(:user_id=>current_user.id)
 end
 
 def update
-@userdailydata = Userdailydata.where(:user_id=>current_user.id)
+@userdailydata = Userdailydata.find(params[:id])
 #right now every row updates with the same
+  respond_to do |format|
+    if @userdailydata.update(allowed_params) 
+       format.html { redirect_to @userdailydata }
+       format.json { respond_with_bip(@userdailydata) }
+   else
+       format.html { render :action => "edit" }
+       format.json { respond_with_bip(@userdailydata) }
+   end
+   end   
 
-
-respond_with @userdailydata
-##would update every row with the same changes
-##need to update current row
- @userdailydata.each do |data|
-   data.update_attributes(allowed_params)	
 end
-end
 
+
+def show
+@userdailydata = Userdailydata.find(params[:id])
+end
 
 def new
 @userdailydata=Userdailydata.new

@@ -7,6 +7,7 @@ TrueFinisher::Application.routes.draw do
   root 'static#about'
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
+  get '/story', to: 'static#joestory'
   get '/data', to: 'userdailydata#index'
   resources :userdailydata
 
