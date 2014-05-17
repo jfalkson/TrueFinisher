@@ -1,4 +1,30 @@
-<br/>
+<!--currently unused -->
+
+<%= form_for @userdailydata do |f| %>
+    
+    <% if @userdailydata.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@userdailydata.errors.count, "error") %> prohibited this userdata from being saved:</h2>
+	   <% end %> 
+
+<!--
+  <div><%= f.label "Date"%><br />
+  we call rec_types from the static list in the model 
+ 
+
+  <%= f.text_field :date %></div> -->
+  <div><%= f.date_select :date, :order => [:month, :day, :year] %> </div>
+  
+  <div><%= f.label "Calories Consumed" %><br />
+  <%= f.text_field  :calories_consumed %></div>
+
+  <div><%= f.label "Calories Exercised" %><br />
+  <%= f.text_field  :calories_exercised %></div>
+
+  <div><%= f.label "Weight" %><br />
+  <%= f.text_field  :weight %></div>
 
 
-This is the page where the user can edit his calories he already inputted.
+
+  <div> <%= f.submit "Add data " %></div>
+<% end %>
