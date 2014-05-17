@@ -69,7 +69,16 @@ var legend = new Rickshaw.Graph.Legend({
 });
 </script>
 
-<table border='1'>
+<style type="text/css">
+.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+.tftable th {font-size:12px;background-color:#171515;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+.tftable tr {background-color:#ffffff;}
+.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+.tftable tr:hover td {background-color:#ffff99;}
+</style>
+
+
+<table border='1' class="tftable">
   <thead>
     <tr>
       <th>DateTest </th>
@@ -80,17 +89,19 @@ var legend = new Rickshaw.Graph.Legend({
   </thead>
   <tbody>
 
-    <%= best_in_place @userdailydata.last, :date %>
 <% @userdailydata.each do |data| %>
 <tr>
-<td> <%= best_in_place data, :date %> </td>
+<td> <%= best_in_place data, :date,:display_with => lambda { |v| v.strftime("%Y-%m-%d") }  %> </td>
 <td> <%= best_in_place data, :calories_consumed %> </td>
 <td> <%= best_in_place data, :calories_exercised %> </td>
 <td> <%= best_in_place data, :weight %> </td>
-<td> <%= link_to 'Edit', edit_userdailydatum_path(current_user.id) %> </td>
 </tr> 
 <% end %>
 </tbody>
 </table>
+
+
+
+
 
 <!-- .strftime("%Y-%m-%d") -->

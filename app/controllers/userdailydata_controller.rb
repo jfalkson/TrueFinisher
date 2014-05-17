@@ -8,6 +8,8 @@ respond_to :html, :json
 ##Need to have this be the data of the specific user##
 def index
  @userdailydata = Userdailydata.where(:user_id=>current_user.id)
+
+
  userdailycalories=@userdailydata.pluck(:calories_consumed)
  userexercise=@userdailydata.pluck(:calories_exercised)
  userdate=@userdailydata.pluck(:date)
@@ -26,8 +28,17 @@ end
 
 def update
 @userdailydata = Userdailydata.where(:user_id=>current_user.id)
+#right now every row updates with the same
+
+
 respond_with @userdailydata
+##would update every row with the same changes
+##need to update current row
+ @userdailydata.each do |data|
+   data.update_attributes(allowed_params)	
 end
+end
+
 
 def new
 @userdailydata=Userdailydata.new

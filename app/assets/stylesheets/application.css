@@ -13,6 +13,29 @@
  *= require_tree .
  */
 
+.best_in_place {
+  padding: .1m;
+  cursor: hand;
+  cursor: pointer;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+.best_in_place:hover, #dailyuserdata .do_hover {
+  padding-right: 1.5em;
+  background: url(<%= asset_path "pencil.png" %>) no-repeat right;
+  background-color: #CCC;
+}
+.info_edit {
+  float: right;
+  cursor: hand;
+  cursor: pointer;
+}
+
+
 .purr {
   position: fixed;
   top: 30px;
