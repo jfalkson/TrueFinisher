@@ -7,5 +7,10 @@ class User < ActiveRecord::Base
 
   has_many :profiles
   has_many :userdailydata #:foreign_key => 'user_id'
+  validates :email, :uniqueness=>true
+
+  validates :user_gender, :user_name, :user_age, :presence=>true
+  GENDER_TYPES = ["","Male", "Female"]
+
 
 end
