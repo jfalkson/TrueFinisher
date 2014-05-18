@@ -18,7 +18,7 @@
 
 <p>
   <strong>BMI:</strong>
-  <%= @profile.height %>
+  <%= (@profile.start_weight*703 / (@profile.height)**2).round(2) %>
 </p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %>
