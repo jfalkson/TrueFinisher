@@ -1,5 +1,5 @@
 class Userdailydata < ActiveRecord::Base
 belongs_to :user #:foreign_key => 'user_id'
-validates :calories_consumed, numericality: { only_integer: true }
+validates :calories_consumed, :calories_exercised, :weight, numericality: {greater_than_or_equal_to: 0.01}
 	
 end

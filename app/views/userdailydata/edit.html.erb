@@ -16,13 +16,13 @@
   <div><%= f.date_select :date, :order => [:month, :day, :year] %> </div>
   
   <div><%= f.label "Calories Consumed" %><br />
-  <%= f.text_field  :calories_consumed %></div>
+  <%= f.number_field  :calories_consumed %></div>
 
   <div><%= f.label "Calories Exercised" %><br />
-  <%= f.text_field  :calories_exercised %></div>
+  <%= f.number_field  :calories_exercised %></div>
 
   <div><%= f.label "Weight" %><br />
-  <%= f.text_field  :weight %></div>
+  <%= f.number_field  :weight %></div>
 
 
 

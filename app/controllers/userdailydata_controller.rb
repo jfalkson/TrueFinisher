@@ -16,7 +16,6 @@ def index
 #set graph data to x,y series of date, calories
  gon.calories_consumed=gon.userdate.zip(userdailycalories)
  gon.calories_exercised=gon.userdate.zip(userexercise)
-
 end
 
 def edit
@@ -33,6 +32,7 @@ def update
    else
        format.html { render :action => "edit" }
        format.json { respond_with_bip(@userdailydata) }
+       #format.json { render :json => @userdailydata.errors.full_messages, :status => :unprocessable_entity }
    end
    end   
 

@@ -11,9 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery.purr
+//= require jquery_ujs
 //= require best_in_place
+//= require best_in_place.purr
 //= require twitter/bootstrap
 //= require rickshaw_with_d3
 //= require_tree .
