@@ -11,7 +11,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile=Profile.where(:user_id=>current_user.id).last
+   @profile=Profile.where(:user_id=>current_user.id).last
+#need to create bmr column 
+   gon.bmr=@profile.bmr
+   gon.bmr=@profile.bmr
   end
 
   # GET /profiles/new
@@ -29,6 +32,12 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
+  if current_user.user_gender="Male" then
+#need to create bmr column 
+   @profile.bmr=(66+(6.23*@profile.start_weight) + (12.7*@profile.height) - (6.8 * current_user.user_age.to_i)).round(2)
+  else
+   @profle.bmr=(655+(4.35*@profile.start_weight) + (4.7*@profile.height) - (4.7 * current_user.user_age.to_i)).round(2)
+  end
     @profile.save
 
 
@@ -48,6 +57,14 @@ class ProfilesController < ApplicationController
   def update
 
     @profile=Profile.where(:user_id=>current_user.id).last
+ if current_user.user_gender="Male" then
+#need to create bmr column 
+   @profile.bmr=(66+(6.23*@profile.start_weight) + (12.7*@profile.height) - (6.8 * current_user.user_age.to_i)).round(2)
+  else
+   @profle.bmr=(655+(4.35*@profile.start_weight) + (4.7*@profile.height) - (4.7 * current_user.user_age.to_i)).round(2)
+  end
+
+
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -57,6 +74,7 @@ class ProfilesController < ApplicationController
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
+    @profile.save
   end
 
   # DELETE /profiles/1

@@ -14,6 +14,7 @@
 <script>
 
 
+
 var transformedPoints = gon.calories_consumed.map(function (pt) {
     return {
         x: pt[0],
@@ -22,6 +23,8 @@ var transformedPoints = gon.calories_consumed.map(function (pt) {
 });
 
 gon.calories_consumed = transformedPoints;
+//testing deficit 
+
 
 var transformedExercise = gon.calories_exercised.map(function (pt) {
     return {
@@ -30,7 +33,10 @@ var transformedExercise = gon.calories_exercised.map(function (pt) {
     };
 });
 
+//including bmr and calories burned via exercise
 gon.calories_exercised = transformedExercise;
+
+
 
 
 var graph = new Rickshaw.Graph( {

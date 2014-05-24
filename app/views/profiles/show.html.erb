@@ -21,5 +21,10 @@
   <%= (@profile.start_weight*703 / (@profile.height)**2).round(2) %>
 </p>
 
+<p>
+  <strong>Start BMR:</strong>
+<%= @profile.bmr %>
+</p>
+
 <%= link_to 'Edit', edit_profile_path(@profile) %>
 <!--<%= link_to 'Back', profiles_path %> -->
