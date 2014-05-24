@@ -8,14 +8,16 @@ respond_to :html, :json
 ##Need to have this be the data of the specific user##
 def index
  @userdailydata = Userdailydata.where(:user_id=>current_user.id)
- userdailycalories=@userdailydata.pluck(:calories_consumed)
- userexercise=@userdailydata.pluck(:calories_exercised)
- userdate=@userdailydata.pluck(:date)
- userdate.map! {|d| d.to_i}
- gon.userdate=userdate
-#set graph data to x,y series of date, calories
- gon.calories_consumed=gon.userdate.zip(userdailycalories)
- gon.calories_exercised=gon.userdate.zip(userexercise)
+    userdailycalories=@userdailydata.pluck(:calories_consumed)
+    userexercise=@userdailydata.pluck(:calories_exercised)
+    userdate=@userdailydata.pluck(:date)
+    userdate.map! {|d| d.to_i}
+    gon.userdate=userdate
+    #set graph data to x,y series of date, calories
+
+    gon.calories_consumed=gon.userdate.zip(userdailycalories)
+    gon.calories_exercised=gon.userdate.zip(userexercise)
+
 end
 
 def edit
