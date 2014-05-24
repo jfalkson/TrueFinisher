@@ -14,9 +14,10 @@ def index
     userdate.map! {|d| d.to_i}
     gon.userdate=userdate
     #set graph data to x,y series of date, calories
-
     gon.calories_consumed=gon.userdate.zip(userdailycalories)
     gon.calories_exercised=gon.userdate.zip(userexercise)
+    gon.bmr=userBMR
+
 
 end
 
