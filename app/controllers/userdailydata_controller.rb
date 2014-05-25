@@ -35,7 +35,7 @@ def index
 
 
     ##Need running sum
-    percent_towards_goal = goal_cumulative_caloriesburned.map {|calories| (calories / goalCalories).to_f }
+    percent_towards_goal = goal_cumulative_caloriesburned.map {|calories| (calories.to_f / goalCalories.to_f).round(2) }
     gon.percent_towards_goal=goal_date_ranges.zip(percent_towards_goal)
 
 
