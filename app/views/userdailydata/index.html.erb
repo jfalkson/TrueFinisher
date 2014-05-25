@@ -9,6 +9,12 @@
  
  --> 
 
+
+
+
+
+
+
 <div id="chart"></div> 
 
 <script>
@@ -37,8 +43,15 @@ var transformedGoal = gon.percent_towards_goal.map(function (pt) {
 gon.percent_towards_goal = transformedGoal;
 
 
+var min = Number.MAX_VALUE;
+var max = Number.MIN_VALUE;
+for (i = 0; i < transformedGoal[0].length; i++) {
+  min = Math.min(min, transformedGoal.y);
+  max = Math.max(max, transformedGoal.y);
+}
 
-
+var logScale = d3.scale.log().domain([min/4, max]);
+var linearScale = d3.scale.linear().domain([min, max]).range(logScale.range());
 var graph = new Rickshaw.Graph( {
   element: document.getElementById("chart"),
   renderer: 'multi',
@@ -51,15 +64,40 @@ var graph = new Rickshaw.Graph( {
       name: 'Calories',
       data: gon.calories_consumed,
       color: 'rgba(255, 0, 0, 0.4)',
-      renderer: 'line'
+      renderer: 'line',
+      scale: logScale
+
+
     }, {
       name: 'Percent towards goal',
       data: gon.percent_towards_goal,
       color: 'rgba(255, 127, 0, 0.4)',
-      renderer: 'line'
+      renderer: 'line',
+      scale: linearScale
     }
   ]
 } );
+
+
+
+new Rickshaw.Graph.Axis.Y.Scaled( {
+  graph: graph,
+  orientation: 'left',
+  tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+  element: document.getElementById('y_axis'),
+  scale: logScale,
+  grid: false
+} );
+
+new Rickshaw.Graph.Axis.Y.Scaled( {
+  graph: graph,
+  orientation: 'right',
+  tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+  element: document.getElementById('y_axis_2'),
+  scale: linearScale,
+  grid: false
+} );
+
 
 
 graph.render();
