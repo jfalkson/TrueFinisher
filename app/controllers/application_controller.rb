@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   respond_to :html, :json
 include ApplicationHelper
-helper_method :userBMR
+helper_method :userBMR, :goalCalories, :goalDates
 
 end
