@@ -26,7 +26,7 @@ gon.calories_consumed = transformedPoints;
 //testing deficit 
 
 
-var transformedExercise = gon.calories_exercised.map(function (pt) {
+var transformedGoal = gon.percent_towards_goal.map(function (pt) {
     return {
         x: pt[0],
         y: pt[1]
@@ -34,7 +34,7 @@ var transformedExercise = gon.calories_exercised.map(function (pt) {
 });
 
 //including bmr and calories burned via exercise
-gon.calories_exercised = transformedExercise;
+gon.percent_towards_goal = transformedGoal;
 
 
 
@@ -53,8 +53,8 @@ var graph = new Rickshaw.Graph( {
       color: 'rgba(255, 0, 0, 0.4)',
       renderer: 'line'
     }, {
-      name: 'Exercise Calories',
-      data: gon.calories_exercised,
+      name: 'Percent towards goal',
+      data: gon.percent_towards_goal,
       color: 'rgba(255, 127, 0, 0.4)',
       renderer: 'line'
     }

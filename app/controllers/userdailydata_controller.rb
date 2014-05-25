@@ -7,16 +7,36 @@ respond_to :html, :json
 
 ##Need to have this be the data of the specific user##
 def index
- @userdailydata = Userdailydata.where(:user_id=>current_user.id)
+   @userdailydata = Userdailydata.where(:user_id=>current_user.id)
+
+    ##Historical caloric intake and calories burned
     userdailycalories=@userdailydata.pluck(:calories_consumed)
     userexercise=@userdailydata.pluck(:calories_exercised)
     userdate=@userdailydata.pluck(:date)
     userdate.map! {|d| d.to_i}
+    
+    ##Use gon gem for javascript rendering by client
     gon.userdate=userdate
-    #set graph data to x,y series of date, calories
+    ## we put data in 2d array to be plotted
     gon.calories_consumed=gon.userdate.zip(userdailycalories)
     gon.calories_exercised=gon.userdate.zip(userexercise)
-    gon.bmr=userBMR
+    calories_burned=userexercise
+    ##Total calories burned in a given day
+    calories_burned.map! {|calories| (calories+userBMR)}
+    gon.calories_burned=gon.userdate.zip(calories_burned)
+
+
+    ##Tracks calories burned since goal began 
+    goal_calories_burned=@userdailydata.where("date > ?", goalDates).pluck(:calories_exercised)
+    goal_date_ranges= @userdailydata.where("date > ?", goalDates).pluck(:date)
+    goal_date_ranges.map! {|d| d.to_i}
+    ##Running sum to track running sums when initially given an array
+    goal_cumulative_caloriesburned = goal_calories_burned.inject([]) { |result, element| result << result.last.to_i + element }
+
+
+    ##Need running sum
+    percent_towards_goal = goal_cumulative_caloriesburned.map {|calories| (calories / goalCalories).to_f }
+    gon.percent_towards_goal=goal_date_ranges.zip(percent_towards_goal)
 
 
 end
@@ -35,7 +55,6 @@ def update
    else
        format.html { render :action => "edit" }
        format.json { respond_with_bip(@userdailydata) }
-       #format.json { render :json => @userdailydata.errors.full_messages, :status => :unprocessable_entity }
    end
    end   
 
