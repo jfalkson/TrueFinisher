@@ -1,26 +1,50 @@
 
 </br>
-<!--! 
 
+<!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
 <script src="../d3.v2.js"></script> 
-<script src="../rickshaw.js"></script> 
+<script src="../rickshaw.js"></script>  -->
  
- --> 
+
+<div id="chart"> 
 
 
 
 
+</div> 
+
+<!-- need to fix css so that graph renders nicely --> 
+<style type="text/css">
+  #axis0 {
+    position: absolute;
+    height: 800px;
+    width: 40px;
+    top: 0;
+  }
+  #axis1 {
+    position: absolute;
+    left: 1300px;
+    height: 800px;
+    width: 40px;
+    top: 0;
+  }
+  #chart {
+    left: 50px;
+    width: 1000px;
+  }
+</style>
 
 
+<div id="axis0"></div>
+<div id="chart"></div>
+<div id="axis1"></div>
 
-<div id="chart"></div> 
 
 <script>
 
-
-
+//x is the date, y is the calories consumed
 var transformedPoints = gon.calories_consumed.map(function (pt) {
     return {
         x: pt[0],
@@ -29,9 +53,30 @@ var transformedPoints = gon.calories_consumed.map(function (pt) {
 });
 
 gon.calories_consumed = transformedPoints;
+
+/**
+
+var percentify = function(y) 
+{ 
+ return (y*100).toFixed(2) + '%';
+}
+
+var percentages = gon.percent_towards_goal[1];
+
+for (i=0; i<percentages.length; i++){
+
+percentify(percentages[i]);
+
+}
+
+console.log(percentages)
+
+gon.percent_towards_goal[1]=percentages;
+
+*/
+
 //testing deficit 
-
-
+//x is the date, y is the calories burned - calories consumed / calories needed for goal
 var transformedGoal = gon.percent_towards_goal.map(function (pt) {
     return {
         x: pt[0],
@@ -39,33 +84,64 @@ var transformedGoal = gon.percent_towards_goal.map(function (pt) {
     };
 });
 
+
 //including bmr and calories burned via exercise
 gon.percent_towards_goal = transformedGoal;
 
 
-var min = Number.MAX_VALUE;
-var max = Number.MIN_VALUE;
-for (i = 0; i < transformedGoal[0].length; i++) {
-  min = Math.min(min, transformedGoal.y);
-  max = Math.max(max, transformedGoal.y);
+var data, max, min, point, random, scales, series, _j, _k, _l, _len, _len1, _len2, _ref;
+
+data = [gon.calories_consumed, gon.percent_towards_goal];
+
+
+
+scales = [];
+
+
+// for each of the two series
+for (_k = 0, _len1 = data.length; _k < _len1; _k++) {
+  series = data[_k];
+  min = Number.MAX_VALUE;
+  max = Number.MIN_VALUE;
+//for each element within the series we are currently on
+  for (_l = 0, _len2 = series.length; _l < _len2; _l++) {
+    //for each point in the series we are currently on
+    point = series[_l];
+    //takes the min of point y and the past min
+    min = Math.min(min, point.y);
+    //takes a running max
+    max = Math.max(max, point.y);
+  }
+
+//Push just adds elements to an array. 
+
+  if (_k === 0) {
+    //we only have 2 series, this code says make the first series linear
+    scales.push(d3.scale.linear().domain([min, max]).nice());
+  } else {
+    //else, make the series exponential/linear, whatever is specified in the code below
+    //nice just picks a nice starting and ending point
+    //say, only beginning and endings of months 
+    scales.push(d3.scale.linear().domain([min, max]).nice());
+  }
 }
 
-var logScale = d3.scale.log().domain([min/4, max]);
-var linearScale = d3.scale.linear().domain([min, max]).range(logScale.range());
+
 var graph = new Rickshaw.Graph( {
   element: document.getElementById("chart"),
   renderer: 'multi',
   width: 900,
   height: 500,
   dotSize: 5,
+  padding:{top:0.01 , right:.01 , bottom:.01 , left:0} ,
   //need to put in x,y pairs
   series: [
     {
       name: 'Calories',
       data: gon.calories_consumed,
-      color: 'rgba(255, 0, 0, 0.4)',
-      renderer: 'line',
-      scale: logScale
+      color: 'steelblue',
+      renderer: 'line' ,
+      scale: scales[0]
 
 
     }, {
@@ -73,46 +149,51 @@ var graph = new Rickshaw.Graph( {
       data: gon.percent_towards_goal,
       color: 'rgba(255, 127, 0, 0.4)',
       renderer: 'line',
-      scale: linearScale
+      scale: scales[1]
     }
   ]
 } );
 
 
-
-new Rickshaw.Graph.Axis.Y.Scaled( {
+var y1 = new Rickshaw.Graph.Axis.Y.Scaled({
+  element: document.getElementById('axis0'),
   graph: graph,
   orientation: 'left',
-  tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-  element: document.getElementById('y_axis'),
-  scale: logScale,
-  grid: false
-} );
+  grid: false,
+  //this scale doesnt seem to be used
+  scale: scales[0],
+  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+});
 
-new Rickshaw.Graph.Axis.Y.Scaled( {
+
+
+var y2 = new Rickshaw.Graph.Axis.Y.Scaled({
+  element: document.getElementById('axis1'),
   graph: graph,
+  grid: false,
   orientation: 'right',
-  tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-  element: document.getElementById('y_axis_2'),
-  scale: linearScale,
-  grid: false
-} );
+  //when below is 0 we have the calories on primary axis
+  scale: scales[1],
+  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+});
 
+new Rickshaw.Graph.Axis.Time({
+  graph: graph
+});
 
+y1.render();
+y2.render();
 
 graph.render();
+
 
 
 var detail = new Rickshaw.Graph.HoverDetail({
   graph: graph
 });
-
-var legend = new Rickshaw.Graph.Legend({
-  graph: graph,
-  element: document.querySelector('#legend')
-});
-
 </script>
+
+
 
 <style type="text/css">
 .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
