@@ -154,6 +154,7 @@ var graph = new Rickshaw.Graph( {
   ]
 } );
 
+var formatDecimal = d3.format("0,000");
 
 var y1 = new Rickshaw.Graph.Axis.Y.Scaled({
   element: document.getElementById('axis0'),
@@ -162,10 +163,10 @@ var y1 = new Rickshaw.Graph.Axis.Y.Scaled({
   grid: false,
   //this scale doesnt seem to be used
   scale: scales[0],
-  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+  tickFormat: formatDecimal
 });
 
-
+var formatPercent = d3.format("00.00%");
 
 var y2 = new Rickshaw.Graph.Axis.Y.Scaled({
   element: document.getElementById('axis1'),
@@ -174,7 +175,7 @@ var y2 = new Rickshaw.Graph.Axis.Y.Scaled({
   orientation: 'right',
   //when below is 0 we have the calories on primary axis
   scale: scales[1],
-  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+  tickFormat: formatPercent
 });
 
 new Rickshaw.Graph.Axis.Time({
@@ -207,7 +208,7 @@ var detail = new Rickshaw.Graph.HoverDetail({
 <table border='1' class="tftable">
   <thead>
     <tr>
-      <th>DateTest </th>
+      <th>Date </th>
       <th>Calories Consumed</th>
       <th>Calories Burned by Excercise</th>
       <th>Weight</th>
@@ -223,11 +224,12 @@ var detail = new Rickshaw.Graph.HoverDetail({
 <td> <%= best_in_place data, :weight %> </td>
 
 </tr> 
+
 <% end %>
 </tbody>
 </table>
 
-
+<!-- need to include current dates row-->
 
 
 
