@@ -35,6 +35,9 @@ gem 'devise'
 #let's us call rails from inside javascript
 gem 'gon'
 
+##lets us add an admin interface
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 ##charting feature
 gem 'rickshaw_rails'
 

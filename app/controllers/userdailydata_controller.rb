@@ -7,7 +7,7 @@ respond_to :html, :json
 
 ##Need to have this be the data of the specific user##
 def index
-   @userdailydata = Userdailydata.where(:user_id=>current_user.id)
+   @userdailydata = Userdailydatum.where(:user_id=>current_user.id)
 
     ##Historical caloric intake and calories burned
     userdailycalories=@userdailydata.pluck(:calories_consumed)
@@ -43,11 +43,11 @@ def index
 end
 
 def edit
- @userdailydata = Userdailydata.where(:user_id=>current_user.id)
+ @userdailydata = Userdailydatum.where(:user_id=>current_user.id)
 end
 
 def update
-@userdailydata = Userdailydata.find(params[:id])
+@userdailydata = Userdailydatum.find(params[:id])
 #right now every row updates with the same
   respond_to do |format|
     if @userdailydata.update(allowed_params) 
@@ -63,15 +63,15 @@ end
 
 
 def show
-@userdailydata = Userdailydata.find(params[:id])
+@userdailydata = Userdailydatum.find(params[:id])
 end
 
 def new
-@userdailydata=Userdailydata.new
+@userdailydata=Userdailydatum.new
 end
 
 def create
- @userdailydata=Userdailydata.new(allowed_params)
+ @userdailydata=Userdailydatum.new(allowed_params)
  @userdailydata.user_id = current_user.id
  @userdailydata.save
 end
@@ -79,7 +79,7 @@ end
 #only let this method be accessible within this specific class
 private
 def allowed_params
-  params.require(:userdailydata).permit(:weight,:calories_consumed, :calories_exercised, :date, :user_id)
+  params.require(:userdailydatum).permit(:weight,:calories_consumed, :calories_exercised, :date, :user_id)
 end
 
 
