@@ -1,4 +1,6 @@
 TrueFinisher::Application.routes.draw do
+  devise_for :admins, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :profiles
 
   devise_for :users

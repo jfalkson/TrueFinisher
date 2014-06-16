@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :profiles
-  has_many :userdailydata #:foreign_key => 'user_id'
+  has_many :userdailydata #, :foreign_key => 'user_id'
   validates :email, :uniqueness=>true
 
   validates :user_gender, :user_name, :user_age, :presence=>true
