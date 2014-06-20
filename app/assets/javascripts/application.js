@@ -17,6 +17,15 @@
 //= require best_in_place.purr
 //= require twitter/bootstrap
 //= require rickshaw_with_d3
+//= require freelancer
+//= require profiles
+//= require bootstrap
+//= require cbpAnimatedHeader
+//= require classie
+//= require d3.v2
+//= require rickshaw
+//= require purr
+//= require active_admin
 //= require_tree .
 
 $(document).ready(function() {
