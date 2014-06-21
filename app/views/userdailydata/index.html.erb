@@ -1,19 +1,22 @@
 
 </br>
-
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
 <script src="../d3.v2.js"></script> 
-<script src="../rickshaw.js"></script>  -->
+<script src="../rickshaw.js"></script>  >
  
-
 <div id="chart"> 
 
 
-
-
-</div> 
+</div> -->
 
 <!-- need to fix css so that graph renders nicely --> 
 <style type="text/css">
@@ -21,14 +24,14 @@
     position: absolute;
     height: 800px;
     width: 40px;
-    top: 0;
+    top: 0.1;
   }
   #axis1 {
     position: absolute;
     left: 1300px;
     height: 800px;
     width: 40px;
-    top: 0;
+    top: 0.0;
   }
   #chart {
     left: 50px;
@@ -53,27 +56,6 @@ var transformedPoints = gon.calories_consumed.map(function (pt) {
 });
 
 gon.calories_consumed = transformedPoints;
-
-/**
-
-var percentify = function(y) 
-{ 
- return (y*100).toFixed(2) + '%';
-}
-
-var percentages = gon.percent_towards_goal[1];
-
-for (i=0; i<percentages.length; i++){
-
-percentify(percentages[i]);
-
-}
-
-console.log(percentages)
-
-gon.percent_towards_goal[1]=percentages;
-
-*/
 
 //testing deficit 
 //x is the date, y is the calories burned - calories consumed / calories needed for goal
@@ -183,9 +165,10 @@ new Rickshaw.Graph.Axis.Time({
 });
 
 y1.render();
+graph.render();
 y2.render();
 
-graph.render();
+
 
 
 
@@ -204,6 +187,7 @@ var detail = new Rickshaw.Graph.HoverDetail({
 .tftable tr:hover td {background-color:#ffff99;}
 </style>
 
+</br>
 
 <table border='1' class="tftable">
   <thead>

@@ -17,7 +17,6 @@
 //= require best_in_place.purr
 //= require twitter/bootstrap
 //= require rickshaw_with_d3
-//= require profiles
 //= require bootstrap
 //= require cbpAnimatedHeader
 //= require classie
