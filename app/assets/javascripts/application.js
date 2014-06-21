@@ -22,10 +22,8 @@
 //= require classie
 //= require d3.v2
 //= require rickshaw
-//= require purr
 //= require active_admin
 //= require freelancer
-//= require_tree .
 
 $(document).ready(function() {
   /* Activating Best In Place */
