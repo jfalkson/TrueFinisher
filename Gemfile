@@ -41,6 +41,9 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 ##charting feature
 gem 'rickshaw_rails'
 
+##adding new font
+gem "font-awesome-rails"
+
 #adding bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 

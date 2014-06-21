@@ -9,9 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require rickshaw
+ *= require bootstrap
+ *= require freelancer
+ *= require font-awesome
  *= require_self
  *= require_tree .
  */
+
+@import "font-awesome";
 
 .best_in_place {
   padding: .1m;
