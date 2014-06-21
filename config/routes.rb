@@ -6,10 +6,11 @@ TrueFinisher::Application.routes.draw do
   devise_for :users
   
 
-  root 'static#about'
+  root 'static#index'
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
   get '/story', to: 'static#joestory'
+  get '/index', to: 'static#index'
   get '/data', to: 'userdailydata#index'
   resources :userdailydata
 
