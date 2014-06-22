@@ -1,4 +1,6 @@
 TrueFinisher::Application.routes.draw do
+  resources :supports
+
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :profiles
@@ -14,6 +16,7 @@ TrueFinisher::Application.routes.draw do
   get '/data', to: 'userdailydata#index'
   resources :userdailydata
 
+resources :supports, :only => [:new, :create]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
