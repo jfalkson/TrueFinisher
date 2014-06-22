@@ -24,14 +24,14 @@
     position: absolute;
     height: 800px;
     width: 40px;
-    top: 0.1;
+    top: 200px;
   }
   #axis1 {
     position: absolute;
-    left: 1300px;
+    left: 1000px;
     height: 800px;
     width: 40px;
-    top: 0.0;
+    top: 200px;
   }
   #chart {
     left: 50px;
@@ -130,7 +130,7 @@ var graph = new Rickshaw.Graph( {
       name: 'Percent towards goal',
       data: gon.percent_towards_goal,
       color: 'rgba(255, 127, 0, 0.4)',
-      renderer: 'line',
+      renderer: 'area',
       scale: scales[1]
     }
   ]

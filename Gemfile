@@ -50,6 +50,9 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 #in place editing
 gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 
+#gem 'roadie'
+
+
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
@@ -59,6 +62,9 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+##Testing sending email from rails
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
