@@ -7,7 +7,7 @@ respond_to :html, :json
 
 ##Need to have this be the data of the specific user##
 def index
-   @userdailydata = Userdailydatum.where(:user_id=>current_user.id)
+   @userdailydata = Userdailydatum.where(:user_id=>current_user.id).order(date: :asc)
 
     ##Historical caloric intake and calories burned
     userdailycalories=@userdailydata.pluck(:calories_consumed)
