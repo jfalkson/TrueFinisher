@@ -15,6 +15,7 @@
     <%= csrf_meta_tags %>
     <%=include_gon %>
 
+
     <title>True Finisher</title>
 
 
@@ -55,11 +56,14 @@
                     </li>
                    <li><%= link_to "Add Data", new_userdailydatum_url  %></li>
                     <li><%= link_to "View Data", userdailydata_url  %>
-                    <li> <%=link_to "Log-in", new_user_session_path %> </li> 
+                   
                   <% if user_signed_in? %> 
                   <li> <%= menu_text "Signed in as #{current_user.email} " %> </li>
               <li>  <%= link_to "Log-out", destroy_user_session_path, method: :delete %> </li>
-            
+                <% else %>
+
+                 <li> <%=link_to "Log-in", new_user_session_path %> </li> 
+
             <% end %>
 
 
@@ -76,7 +80,9 @@
 </br>
 </br>
 
-
+    <% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
 
    
 <%= yield %>

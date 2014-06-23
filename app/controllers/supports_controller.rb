@@ -16,8 +16,15 @@ class SupportsController < ApplicationController
     if @support.save
       redirect_to('/', :notice => "Support was successfully sent.")
     else
-      flash[:alert] = "You must fill all fields."
-      render 'new'
+       respond_to do |format|
+ format.html { 
+      flash[:notice] = 'Tv show was successfully created.'
+      redirect_to('/', :notice => "Support was successfully sent.")
+    }
+  end
+      flash[:notice] = "You must fill all fields."
+      #render 'new'
+      #redirect_to('/', :notice => "Please fill out all fields.")
     end
   end
 
