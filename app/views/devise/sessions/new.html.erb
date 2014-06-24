@@ -1,17 +1,50 @@
-<h2>Sign in</h2>
+ <section id="contact">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { role: "form" }) do |f| %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+  <div>
+  <%= f.email_field :email, :autofocus => true, placeholder: "Email" , class: "form-control" %></div>
+   </div>
+</div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div>
+  	<div class="row">
+ <div class="form-group col-xs-12 floating-label-form-group">
+  <%= f.password_field :password, placeholder: "Password", class: "form-control" %></div>
+    </div>
+</div>
+ 
+ <!--
+ <div class="row">
+ 	<div class="form-group col-xs-12 floating-label-form-group">
+  <% if devise_mapping.rememberable? %>
+  	Remember me?
+	<div><%= f.check_box :remember_me, class: "form-control" %> </div>
+  <% end %>     
+	</div>
+</div> -->
+
+ <div class="row">
+    <div class="form-group col-xs-12">
+  <div><%= f.submit "Sign in", class: "btn btn-lg btn-success"  %></div>
+    </div>
+ </div>
+
 <% end %>
-
 <%= render "devise/shared/links" %>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+ 
+
