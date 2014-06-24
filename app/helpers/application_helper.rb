@@ -17,7 +17,6 @@ module ApplicationHelper
 	#gets all applicable dates	
 	 goalstartdate=Profile.where(:user_id=>current_user.id).last.goalstartdate
 
-
 	end
 
 

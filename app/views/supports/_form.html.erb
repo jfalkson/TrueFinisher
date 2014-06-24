@@ -1,0 +1,31 @@
+<!-- app/views/supports/_form.html.erb -->
+<%= form_for @support=Support.new, :url => { :action => "create", :controller=> "supports" }, :html => { :method => :post }, html: { role: "form" } do |f| %>
+ 
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+    <%= f.text_field :sender_name, class: "form-control" , placeholder: "Name"%>
+  </div>
+</div>
+
+
+<div class="row">
+ <div class="form-group col-xs-12 floating-label-form-group">
+    <%= f.text_field :email, class: "form-control" , placeholder: "Email" %>
+ </div>
+</div>
+
+<div class="row">
+ <div class="form-group col-xs-12 floating-label-form-group">
+    <%= f.text_area :content , class: "form-control" , :rows => "5", placeholder: "Type here!" %>
+    </div>
+ </div>    
+ 
+ <div class="row">
+    <div class="form-group col-xs-12">
+    <%= f.submit "Send", class: "btn btn-lg btn-success" %>
+    </div>
+ </div>
+
+<% end %>
+
+                                

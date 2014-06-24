@@ -15,6 +15,7 @@
     <%= csrf_meta_tags %>
     <%=include_gon %>
 
+
     <title>True Finisher</title>
 
 
@@ -44,6 +45,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    
+                   
+                  <% if user_signed_in? %> 
+                  <li> <%= menu_text "Signed in as #{current_user.email} " %> </li>
+              <li>  <%= link_to "Log-out", destroy_user_session_path, method: :delete %> </li>
+                <% else %>
+
+                 <li> <%=link_to "Log-in", new_user_session_path %> </li> 
+                 <li> <%=link_to "Sign up", new_user_registration_path %> </li> 
+
+            <% end %>
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
@@ -51,19 +63,14 @@
                     <li><%= link_to "About", "/index"  %></li>
 
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="/index/#contact">Contact</a>
                     </li>
                    <li><%= link_to "Add Data", new_userdailydatum_url  %></li>
                     <li><%= link_to "View Data", userdailydata_url  %>
-                    <li> <%=link_to "Log-in", new_user_session_path %> </li> 
-                  <% if user_signed_in? %> 
-                  <li> <%= menu_text "Signed in as #{current_user.email} " %> </li>
-              <li>  <%= link_to "Log-out", destroy_user_session_path, method: :delete %> </li>
-            
-            <% end %>
 
-
-
+                 <li> <%= link_to 'New Goal', new_profile_path %> </li>
+                 <!-- what if user doesnt have a current goal -->
+                  <li><%= link_to 'Edit Current Goal', edit_profile_path(@Profile) %></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -76,7 +83,9 @@
 </br>
 </br>
 
-
+    <% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
 
    
 <%= yield %>
@@ -90,8 +99,8 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                        <p>Falkson Capital
+                            <br>New York, NY 10023</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -107,8 +116,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Freelance</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                        <h3>About True Finisher</h3>
+                        <p>True Finisher is a free to use (free for those in our beta test) weight loss tool</p>
                     </div>
                 </div>
             </div>

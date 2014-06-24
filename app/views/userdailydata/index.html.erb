@@ -7,6 +7,7 @@
 </br>
 </br>
 </br>
+
 <!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
@@ -19,19 +20,25 @@
 </div> -->
 
 <!-- need to fix css so that graph renders nicely --> 
+<h1><center> Weight Loss Chart</center></h1>
+ <section id="contact">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
+
+
 <style type="text/css">
   #axis0 {
     position: absolute;
     height: 800px;
     width: 40px;
-    top: 200px;
+    top: 0px;
   }
   #axis1 {
     position: absolute;
     left: 1000px;
     height: 800px;
     width: 40px;
-    top: 200px;
+    top: 0px;
   }
   #chart {
     left: 50px;
@@ -145,6 +152,14 @@ var y1 = new Rickshaw.Graph.Axis.Y.Scaled({
   grid: false,
   //this scale doesnt seem to be used
   scale: scales[0],
+    label: {
+     text: 'click',
+     color: 'red',
+     opacity: 0.5,
+     fontSize: '12px',
+     offsetX: '2em',
+     offsetY: '-7em',
+   },
   tickFormat: formatDecimal
 });
 
@@ -157,6 +172,14 @@ var y2 = new Rickshaw.Graph.Axis.Y.Scaled({
   orientation: 'right',
   //when below is 0 we have the calories on primary axis
   scale: scales[1],
+  label: {
+     text: 'click',
+     color: 'red',
+     opacity: 0.5,
+     fontSize: '12px',
+     offsetX: '2em',
+     offsetY: '-7em',
+   },
   tickFormat: formatPercent
 });
 
@@ -177,6 +200,10 @@ var detail = new Rickshaw.Graph.HoverDetail({
 });
 </script>
 
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 <style type="text/css">
@@ -212,6 +239,7 @@ var detail = new Rickshaw.Graph.HoverDetail({
 <% end %>
 </tbody>
 </table>
+
 
 <!-- need to include current dates row-->
 
