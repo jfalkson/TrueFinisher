@@ -9,6 +9,9 @@ respond_to :html, :json
 def index
    @userdailydata = Userdailydatum.where(:user_id=>current_user.id).order(date: :asc)
 
+   ## need to be able to convert date to better format here
+   ##@userdailydata.map { |v| v.date = v.date.strftime("%Y-%m-%d") }
+   ##
     ##Historical caloric intake and calories burned
     userdailycalories=@userdailydata.pluck(:calories_consumed)
     userexercise=@userdailydata.pluck(:calories_exercised)

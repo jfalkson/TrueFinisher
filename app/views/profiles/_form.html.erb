@@ -1,4 +1,8 @@
-<%= form_for(@profile) do |f| %>
+ <section id="contact">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
+
+<%= form_for(@profile, html: { role: "form" }) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -11,25 +15,54 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+    Starting Weight
     <%= f.label :start_weight %><br>
-    <%= f.number_field :start_weight %>
+    <%= f.number_field :start_weight, class: "form-control" %>
   </div>
-  <div class="field">
+</div>
+
+
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+    Goal Weight
     <%= f.label :goal_weight %><br>
-    <%= f.number_field :goal_weight %>
+    <%= f.number_field :goal_weight, class: "form-control" %>
   </div>
-  <div class="field">
+</div>
+
+
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+    Height (inches)
     <%= f.label :height %><br>
-    <%= f.text_field :height %>
+    <%= f.text_field :height, class: "form-control" %>
   </div>
+</div>
+ 
 
-  <div class="field">
+
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+    Date
     <%= f.label :goal_start_date %><br>
-    <%= f.date_field :goalstartdate %>
+    <%= f.date_field :goalstartdate, class: "form-control" %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+ <div class="row">
+    <div class="form-group col-xs-12">
+  <div> <%= f.submit "Save Goal!", class: "btn btn-lg btn-success"  %></div>
+      </div>
+ </div>
+
 <% end %>
+
+
+                </div>
+            </div>
+        </div>
+    </section>

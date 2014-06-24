@@ -1,6 +1,10 @@
 </br>
-<h4>Add a new entry of your calories for <%= Time.now.strftime("%Y-%m-%d") %></h4>
 
+ <section id="contact">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
+
+<h4>Today is <%= Time.now.strftime("%Y-%m-%d") %>, please enter your calories</h4>
 
 <%= form_for @userdailydata, url: {action: "create"} do |f| %>
     
@@ -9,24 +13,43 @@
     <h2><%= pluralize(@userdailydata.errors.count, "error") %> prohibited this userdata from being saved:</h2>
 	   <% end %> 
 
-<!--
-  <div><%= f.label "Date"%><br />
-  we call rec_types from the static list in the model 
- 
 
-  <%= f.text_field :date %></div> -->
-  <div><%= f.date_select :date, :order => [:month, :day, :year] %> </div>
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
+  <div><%= f.date_select :date, :order => [:month, :day, :year], class: "form-control" %> </div>
+      </div>
+ </div>
   
+  <div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
   <div><%= f.label "Calories Consumed" %><br />
-  <%= f.number_field  :calories_consumed %></div>
+  <%= f.number_field  :calories_consumed, class: "form-control",placeholder: "calories consumed" %></div>
+      </div>
+ </div>
 
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
   <div><%= f.label "Calories Exercised" %><br />
-  <%= f.number_field  :calories_exercised %></div>
+  <%= f.number_field  :calories_exercised, class: "form-control", placeholder: "calories burned via exercise" %></div>
+      </div>
+ </div>
 
+<div class="row">
+  <div class="form-group col-xs-12 floating-label-form-group">
   <div><%= f.label "Weight" %><br />
-  <%= f.number_field  :weight %></div>
+  <%= f.number_field  :weight, class: "form-control", placeholder: "enter current weight" %></div>
+      </div>
+ </div>
 
 
-
-  <div> <%= f.submit "Add data " %></div>
+ <div class="row">
+    <div class="form-group col-xs-12">
+  <div> <%= f.submit "Add data ", class: "btn btn-lg btn-success"  %></div>
+      </div>
+ </div>
 <% end %>
+
+                </div>
+            </div>
+        </div>
+    </section>
