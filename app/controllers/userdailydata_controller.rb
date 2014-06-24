@@ -77,7 +77,8 @@ def create
  @userdailydata=Userdailydatum.new(allowed_params)
  @userdailydata.user_id = current_user.id
  @userdailydata.save
-   # Tell the UserMailer to send an email after new data is added
+# Tell the UserMailer to send an email after new data is added
+
 Weeklystatus.weekly_email(current_user.email).deliver
 end
 
