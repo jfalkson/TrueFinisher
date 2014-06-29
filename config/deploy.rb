@@ -20,7 +20,7 @@ default_run_options[:pty] = true
 # default_environment['PATH']='<your paths>:/usr/local/bin:/usr/bin:/bin'
 # default_environment['GEM_PATH']='<your paths>:/usr/lib/ruby/gems/1.8'
 # miscellaneous options
-set :deploy_via, :remote_cache 
+set :deploy_via, :copy
 set :scm, 'git'
 set :branch, 'master'
 set :scm_verbose, true
@@ -28,14 +28,19 @@ set :use_sudo, false
 set :normalize_asset_timestamps, false
 set :rails_env, :production
 
+
+
 namespace :deploy do
 	desc "cause Passenger to initiate a restart" 
 	task :restart do
 	run "touch #{current_path}/tmp/restart.txt" 
 end
 
+after "deploy:restart", "deploy:cleanup"
+
 desc "reload the database with seed data" 
 task :seed do
     deploy.migrations
-run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}" end
+#run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}" 
+end
 end
