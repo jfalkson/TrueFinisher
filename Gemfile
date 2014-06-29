@@ -58,6 +58,7 @@ gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 #end
 
 
+
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
@@ -78,7 +79,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+gem 'capistrano', '~> 2.15'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
