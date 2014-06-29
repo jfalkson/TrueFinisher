@@ -59,6 +59,12 @@ end
 #group :production do
 #	gem 'mysql2'
 #end
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 5a50773b2de144406085a8e21c328666fcb05cbe
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
@@ -79,7 +85,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+gem 'capistrano', '~> 2.15'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
