@@ -56,15 +56,7 @@ gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 group :production do
 	gem 'mysql2'
 end
-#group :production do
-#	gem 'mysql2'
-#end
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 5a50773b2de144406085a8e21c328666fcb05cbe
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
