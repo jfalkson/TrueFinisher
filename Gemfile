@@ -16,7 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-#
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
@@ -57,7 +56,9 @@ gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 group :production do
 	gem 'mysql2'
 end
-
+#group :production do
+#	gem 'mysql2'
+#end
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
@@ -78,7 +79,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
