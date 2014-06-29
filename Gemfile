@@ -53,9 +53,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 
 #gem 'roadie'
-group :production do
-	gem 'mysql2'
-end
+
 
 group :development do
 	gem 'better_errors'
