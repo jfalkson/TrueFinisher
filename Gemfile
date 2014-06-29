@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes 
 #
 gem 'therubyracer', '~> 0.12.1'
-gem 'libv8', '~> 3.16.14.3', :platform => :ruby
+gem 'libv8', '~> 3.16.14', :platform => :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -56,9 +56,9 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 
 #gem 'roadie'
-group :production do
-	gem 'mysql2'
-end
+# group :production do
+# 	gem 'mysql2'
+# end
 
 group :development do
 	gem 'better_errors'

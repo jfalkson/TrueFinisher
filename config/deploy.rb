@@ -37,7 +37,7 @@ namespace :deploy do
 	run "touch #{current_path}/tmp/restart.txt" 
 end
 
-after "deploy:restart", "deploy:cleanup"
+after "deploy:update" , "deploy:cleanup"
 
 desc "reload the database with seed data" 
 task :seed do
