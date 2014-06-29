@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+set :bundle_without,  [:development, :test, :assets]
 set :user, 'ec2-user'
 set :domain, '54.191.1.44' 
 set :application, 'TrueFinisher'
