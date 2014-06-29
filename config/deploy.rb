@@ -1,9 +1,13 @@
-require 'bundler/capistrano'
 set :bundle_without,  [:development, :test, :assets]
 set :user, 'ec2-user'
 set :domain, '54.191.1.44' 
 set :application, 'TrueFinisher'
+set :bundle_flags,    "--deployment"
+require 'bundler/capistrano'
  # be sure to change these
+
+
+
 # file paths
 set :repository, "#{user}@#{domain}:git/#{application}.git" 
 set :deploy_to, "/home/#{user}/#{application}"
