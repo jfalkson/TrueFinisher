@@ -82,7 +82,9 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 2.15'
+gem 'capistrano'
+gem 'capistrano-rails' , '~> 1.1.1'
+gem 'capistrano-bundler', '~> 1.1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
