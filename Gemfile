@@ -58,8 +58,8 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem "best_in_place", github: 'bernat/best_in_place', branch: "rails-4"
 
 #gem 'roadie'
-# group :production do
-# 	gem 'mysql2'
+#group :production do
+ #	gem 'mysql2'
 # end
 
 group :development do
@@ -82,7 +82,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano'
+gem 'capistrano', '~>3.1'
 gem 'capistrano-rails' , '~> 1.1.1'
 gem 'capistrano-bundler', '~> 1.1.2'
 
