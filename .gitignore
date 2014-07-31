@@ -17,3 +17,4 @@
 
 # ignore the db config
 /config/database.yml
+
