@@ -25,5 +25,5 @@ production:
   database: truefinisher_production
   pool: 5
   username: 'joe'
-  password: 'yeojab1c'
+  password: 'need_to_encrypt'
   host: localhost
